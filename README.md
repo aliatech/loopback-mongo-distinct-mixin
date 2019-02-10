@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/aliatech/loopback-mongo-distinct-mixin.svg?branch=master)](https://travis-ci.org/aliatech/loopback-mongo-distinct-mixin)
+[![npm version](https://badge.fury.io/js/loopback-mongo-distinct-mixin.svg)](https://badge.fury.io/js/loopback-mongo-distinct-mixin)
 
 # Loopback Distinct mixin for MongoDB
 
