@@ -103,7 +103,7 @@ These are the default options that will be merged with the model specifics:
       "accepts": [{
         "arg": "property",
         "type": "string",
-        "required": true // false if defaultProperty is specified
+        "required": true
       }, {
         "arg": "where",
         "type": "object",
@@ -118,6 +118,8 @@ These are the default options that will be merged with the model specifics:
   }
 }
 ```
+
+Note that `property` argument will required only if `defaultProperty` is not set.
 
 ### Advanced usage
 
