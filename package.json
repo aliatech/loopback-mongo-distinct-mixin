@@ -1,0 +1,42 @@
+{
+  "name": "loopback-mongo-distinct-mixin",
+  "version": "1.0.0",
+  "description": "Loopback mixin to provide mongo distinct queries",
+  "keywords": [
+    "node",
+    "loopback",
+    "mongo",
+    "mixin"
+  ],
+  "author": {
+    "name": "Juan Costa (ALIA Technologies)",
+    "email": "juancosta@alialabs.com",
+    "social": "Akeri",
+    "url": "http://alialabs.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aliatech/loopback-mongo-distinct-mixin.git"
+  },
+  "scripts": {
+    "lint": "eslint index.js",
+    "test": "mocha --exit"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "loopback-connector-mongodb": "^3.9.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.13.0",
+    "eslint-config-google": "^0.12.0",
+    "loopback": "^3.25.0",
+    "loopback-boot": "^2.27.1",
+    "loopback-component-explorer": "^6.3.1",
+    "loopback-testing": "^1.4.0",
+    "mocha": "^5.2.0",
+    "should": "^13.2.3",
+    "strong-error-handler": "^3.2.0"
+  }
+}
