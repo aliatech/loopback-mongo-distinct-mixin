@@ -7,6 +7,9 @@ const app = require('./fixtures/get-app')('simple-app');
 const Seeder = require('./fixtures/simple-app/populate');
 const request = require('request');
 
+// Import the mixin.
+require('../')(app);
+
 
 describe('Distinct features', function () {
 
