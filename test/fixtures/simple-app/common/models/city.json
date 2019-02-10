@@ -1,0 +1,31 @@
+{
+  "name": "City",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Distinct": {
+      "remote": {
+        "enabled": true,
+        "definition": {
+          "http": {
+            "path": "/differentValues"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "population": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "methods": {}
+}

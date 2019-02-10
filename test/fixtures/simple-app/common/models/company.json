@@ -1,0 +1,27 @@
+{
+  "name": "Company",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Distinct": {
+      "defaultProperty": "name",
+      "remote": {
+        "enabled": true
+      }
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "sector": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "methods": {}
+}

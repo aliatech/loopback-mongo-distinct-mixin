@@ -1,0 +1,10 @@
+{
+  "db": {
+    "name": "db",
+    "database": "loopback-mongo-distinct-mixin-test",
+    "connector": "mongodb",
+    "useNewUrlParser": true,
+    "prohibitHiddenPropertiesInQuery": false,
+    "maxDepthOfQuery": 20
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "initial": {},
+  "session": {},
+  "auth": {},
+  "parse": {},
+  "routes": {},
+  "files": {},
+  "final": {},
+  "final:after": {
+    "strong-error-handler": {
+      "params": {
+        "debug": false,
+        "log": false
+      }
+    }
+  }
+}
