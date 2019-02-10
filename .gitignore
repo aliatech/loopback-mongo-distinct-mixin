@@ -2,3 +2,5 @@
 node_modules
 *.sock
 .idea
+.nyc_output
+.coveralls.yml

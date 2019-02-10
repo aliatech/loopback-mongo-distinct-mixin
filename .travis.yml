@@ -7,4 +7,6 @@ node_js:
 services:
   - mongodb
 script:
-  - npm test
+  - npm test-with-coverage
+after_success:
+  - npm run publish-coverage

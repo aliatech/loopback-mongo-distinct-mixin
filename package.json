@@ -9,6 +9,8 @@
     "node",
     "loopback",
     "mongo",
+    "distinct",
+    "orm",
     "mixin"
   ],
   "author": {
@@ -24,7 +26,9 @@
   },
   "scripts": {
     "lint": "eslint index.js",
-    "test": "mocha --exit"
+    "test": "mocha",
+    "test-with-coverage": "nyc --reporter=text --reporter=text-summary mocha",
+    "publish-coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "main": "index.js",
   "dependencies": {
@@ -32,6 +36,7 @@
     "loopback-connector-mongodb": "^3.9.2"
   },
   "devDependencies": {
+    "coveralls": "^3.0.2",
     "eslint": "^5.13.0",
     "eslint-config-google": "^0.12.0",
     "loopback": "^3.25.0",
@@ -39,6 +44,7 @@
     "loopback-component-explorer": "^6.3.1",
     "loopback-testing": "^1.4.0",
     "mocha": "^5.2.0",
+    "nyc": "^13.2.0",
     "should": "^13.2.3",
     "strong-error-handler": "^3.2.0"
   }
