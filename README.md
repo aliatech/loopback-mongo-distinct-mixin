@@ -11,13 +11,13 @@ Works for Loopback 2 and 3.
 Install the package through NPM
 
 ```bash
-npm i -S loopback-mongo-distinct-mixin
+npm i -S @aliatech/loopback-mongo-distinct-mixin
 ```
 
 or Yarn
 
 ```bash
-yarn add loopback-mongo-distinct-mixin
+yarn add @aliatech/loopback-mongo-distinct-mixin
 ```
 
 ## Server configuration
