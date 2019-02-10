@@ -1,6 +1,6 @@
 {
   "name": "@aliatech/loopback-mongo-distinct-mixin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Loopback mixin to provide mongo distinct queries",
   "publishConfig": {
     "access": "public"
