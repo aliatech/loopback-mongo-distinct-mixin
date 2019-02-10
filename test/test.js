@@ -21,17 +21,7 @@ describe('Distinct features', function () {
   const distinctCityPopulations = [1, 2, 3];
 
   before(function (done) {
-    try {
-      Person.getConnector().collection(Person.modelName).drop((err) => {
-        if (err) return done(err);
-        Company.getConnector().collection(Company.modelName).drop((err) => {
-          if (err) return done(err);
-          Seeder.seed(app, done);
-        });
-      });
-    } catch (err) {
-      Seeder.seed(app, done);
-    }
+    Seeder.seed(app, done);
   });
 
   it('Should obtain distinct person names', (done) => {
