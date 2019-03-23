@@ -3,18 +3,11 @@
 'use strict';
 
 const should = require('should');
-const app = require('./fixtures/get-app')('simple-app');
-const Seeder = require('./fixtures/simple-app/populate');
 const request = require('request');
 
-// Import the mixin.
-require('../')(app);
+let app;
 
-
-describe('Distinct features', function () {
-
-  const Person = app.models.Person;
-  const Company = app.models.Company;
+describe('Distinct features', () => {
 
   const distinctPersonNames = ['a', 'b', 'c', 'd'];
   const distinctPersonNamesForCompanyB = ['d', 'a', 'c'];
@@ -23,9 +16,26 @@ describe('Distinct features', function () {
   const distinctCompanySectors = ['X', 'Y', 'Z'];
   const distinctCityPopulations = [1, 2, 3];
 
-  before(function (done) {
-    Seeder.seed(app, done);
+  let Company, Person;
+
+  //=====================================================================================
+  // Init fixture
+  //=====================================================================================
+
+  before((done) => {
+    require('./fixtures/get-app')('simple-app')((err, _app) => {
+      if (err) return done(err);
+      app = _app;
+      require('../')(app);
+      Company = app.models.Company;
+      Person = app.models.Person;
+      done();
+    });
   });
+
+  //=====================================================================================
+  // Callback style tests
+  //=====================================================================================
 
   it('Should obtain distinct person names', (done) => {
     Person.distinctValues('name', (err, names) => {
@@ -89,8 +99,8 @@ describe('Distinct features', function () {
   });
 
   it('Should obtain distinct company sectors through the remote', (done) => {
-    request(`${getApiUrl()}/Companies/distinctValues`,
-      {qs: {property: 'sector'}},
+    request(
+      `${getApiUrl()}/Companies/distinctValues`, {qs: {property: 'sector'}},
       (err, res, body) => {
         if (err) return done(err);
         const names = assert200(res, body);
@@ -100,7 +110,8 @@ describe('Distinct features', function () {
   });
 
   it('Should obtain distinct company names with condition through the remote', (done) => {
-    request(`${getApiUrl()}/Companies/distinctValues`,
+    request(
+      `${getApiUrl()}/Companies/distinctValues`,
       {qs: {property: 'name', where: {sector: 'Y'}}},
       (err, res, body) => {
         if (err) return done(err);
@@ -111,7 +122,8 @@ describe('Distinct features', function () {
   });
 
   it('Should obtain distinct city populations through a remote with custom http path', (done) => {
-    request(`${getApiUrl()}/Cities/differentValues`,
+    request(
+      `${getApiUrl()}/Cities/differentValues`,
       {qs: {property: 'population'}},
       (err, res, body) => {
         if (err) return done(err);
@@ -126,6 +138,34 @@ describe('Distinct features', function () {
       if (err) return done(err);
       should.exist(res);
       res.statusCode.should.be.eql(400);
+      done();
+    });
+  });
+
+  //=====================================================================================
+  // Promise style tests
+  //=====================================================================================
+
+  it('Should obtain distinct person names with condition', (done) => {
+    Person.distinctValues('name', {company: 'B'}).then((names) => {
+      should.exist(names);
+      names.should.be.an.Array().and.eql(distinctPersonNamesForCompanyB);
+      done();
+    });
+  });
+
+  it('Should get error calling without property cos person has no defaultProperty', (done) => {
+    Person.distinctValues().catch((err) => {
+      should.exist(err);
+      err.should.be.an.Error();
+      done();
+    });
+  });
+
+  it('Should obtain distinct company names using defaultProperty', (done) => {
+    Company.distinctValues().then((names) => {
+      should.exist(names);
+      names.should.be.an.Array().and.eql(distinctCompanyNames);
       done();
     });
   });

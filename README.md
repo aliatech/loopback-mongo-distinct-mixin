@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/aliatech/loopback-mongo-distinct-mixin.svg?branch=master)](https://travis-ci.org/aliatech/loopback-mongo-distinct-mixin)
 [![Coverage Status](https://coveralls.io/repos/github/aliatech/loopback-mongo-distinct-mixin/badge.svg?branch=master)](https://coveralls.io/github/aliatech/loopback-mongo-distinct-mixin?branch=master)
-[![npm version](https://badge.fury.io/js/%40aliatech%2Floopback-mongo-distinct-mixin.svg)](https://badge.fury.io/js/%40aliatech%2Floopback-mongo-distinct-mixin)
+[![npm version](https://img.shields.io/npm/v/@aliatech/loopback-mongo-distinct-mixin.svg?color=blue)](https://www.npmjs.com/package/@aliatech/loopback-mongo-distinct-mixin)
 
 # Loopback Distinct mixin for MongoDB
 
@@ -20,7 +20,7 @@ npm i -S @aliatech/loopback-mongo-distinct-mixin
 or Yarn
 
 ```bash
-yarn add @aliatech/loopback-mongo-distinct-mixin
+yarn add --prod @aliatech/loopback-mongo-distinct-mixin
 ```
 
 ## Server configuration
@@ -69,9 +69,20 @@ Now you can query for distinct values this way:
 ```js
 app.models.Person.distinctValues('name', (err, names) => {
   if (err) return next(err);
-  console.log(names);
   // names = ['john', 'mary', 'anne', ...]
 });
+```
+
+Or using promise:
+
+```js
+app.models.Person.distinctValues('name')
+  .then((names) => {
+    // names = ['john', 'mary', 'anne', ...]
+  })
+  .catch((err) => {
+    // handle an error
+  });
 ```
 
 ### Advanced configuration
@@ -134,6 +145,8 @@ app.models.Person.distinctValues('name', {company: 'alia'}, (err, names) => {
 });
 ````
 
+Note: Filter should be MongoDB native, not Loopback
+
 #### Call distinct values using a default property.
 
 1. Configure `defaultProperty` option
@@ -174,6 +187,25 @@ request('http://localhost:3000/api/Person/distinctValues',
 
 # Testing
 
+Install develop dependences
+
 ````bash
-npm test
+npm i -D # If you use NPM
+yarn install # If you use Yarn
 ````
+
+Execute tests
+
+````bash
+npm test # Without coverage check
+npm run test-with-coverage # With coverage check
+````
+
+# Credits
+
+Developed by
+[Juan Costa](https://github.com/Akeri "Github's profile")
+for
+[ALIA Technologies](https://github.com/aliatech "Github's profile")
+
+[<img src="http://alialabs.com/images/logos/logo-full-big.png" alt="ALIA Technologies" height=100/>](http://alialabs.com "Go to ALIA Technologies' website")
