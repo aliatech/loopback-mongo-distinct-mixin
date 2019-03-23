@@ -1,6 +1,6 @@
 {
   "name": "@aliatech/loopback-mongo-distinct-mixin",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Loopback mixin to provide mongo distinct queries",
   "publishConfig": {
     "access": "public"
@@ -25,7 +25,8 @@
     "url": "https://github.com/aliatech/loopback-mongo-distinct-mixin.git"
   },
   "scripts": {
-    "lint": "eslint index.js",
+    "lint": "eslint lib",
+    "lint-fix": "eslint --fix lib",
     "test": "mocha",
     "test-with-coverage": "nyc --reporter=text --reporter=text-summary mocha",
     "publish-coverage": "nyc report --reporter=text-lcov | coveralls"
@@ -33,18 +34,17 @@
   "main": "index.js",
   "dependencies": {
     "lodash": "^4.17.11",
-    "loopback-connector-mongodb": "^3.9.2"
+    "polygoat": "^1.1.4"
   },
   "devDependencies": {
+    "@aliatech/eslint-config-aliatech": "^0.1.2",
     "coveralls": "^3.0.2",
     "eslint": "^5.13.0",
-    "eslint-config-google": "^0.12.0",
     "loopback": "^3.25.0",
     "loopback-boot": "^2.27.1",
-    "loopback-component-explorer": "^6.3.1",
-    "loopback-testing": "^1.4.0",
+    "loopback-connector-mongodb": "^3.9.2",
     "mocha": "^5.2.0",
-    "nyc": "^13.2.0",
+    "nyc": "^13.3.0",
     "should": "^13.2.3",
     "strong-error-handler": "^3.2.0"
   }
