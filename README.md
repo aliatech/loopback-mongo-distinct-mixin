@@ -38,7 +38,7 @@ Include the mixin in `server/model-config.json`:
     ],
     "mixins": [
       "loopback/common/mixins",
-      "../node_modules/loopback-mongo-distinct-mixin/lib",
+      "../node_modules/@aliatech/loopback-mongo-distinct-mixin/lib",
       "../common/mixins"
     ]
   }
